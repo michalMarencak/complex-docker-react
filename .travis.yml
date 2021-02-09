@@ -9,14 +9,14 @@ script:
   - docker run -e CI=true michalmarencak/complex-docker-react npm test -- --coverage
 
 after_success:
-  - docker build -t michalmarencak/multi-client ./client
-  - docker build -t michalmarencak/multi-nginx ./nginx
-  - docker build -t michalmarencak/multi-server ./server
-  - docker build -t michalmarencak/multi-worker ./worker
+  - docker build -t devmichal/multi-client ./client
+  - docker build -t devmichal/multi-nginx ./nginx
+  - docker build -t devmichal/multi-server ./server
+  - docker build -t devmichal/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push michalmarencak/multi-client
-  - docker push michalmarencak/multi-nginx
-  - docker push michalmarencak/multi-server
-  - docker push michalmarencak/multi-worker
+  - docker push devmichal/multi-client
+  - docker push devmichal/multi-nginx
+  - docker push devmichal/multi-server
+  - docker push devmichal/multi-worker
